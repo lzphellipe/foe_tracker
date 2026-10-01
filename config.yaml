@@ -1,0 +1,31 @@
+# Configuração do sistema FOE Tracker
+
+camera:
+  indice: 0            # índice da câmera USB (0 = primeira)
+  largura: 1280
+  altura: 720
+  fps: 15
+
+alinhamento:
+  imagem_referencia: dados/referencia.jpg   # foto do painel completo
+  min_correspondencias: 25                  # mínimo de pontos ORB para aceitar a homografia
+  max_features: 2000
+  usar_clahe: true                          # equalização para variações de luz
+
+detector:
+  modelo: modelos/ferramentas.pt            # pesos YOLO treinados nas ferramentas
+  confianca_minima: 0.25                    # abaixo disso, a detecção é descartada
+  confianca_aceita: 0.60                    # entre mínima e aceita = "falha de detecção"
+  dispositivo: cpu                          # cpu | cuda:0
+
+inventario:
+  arquivo_slots: dados/slots.json           # posição esperada de cada ferramenta
+  iou_minimo: 0.30                          # sobreposição mínima detecção x slot
+  quadros_confirmacao: 8                    # quadros seguidos para confirmar mudança de estado
+  alarme_ausencia_segundos: 300             # ausência além disso gera alarme
+
+banco:
+  caminho: dados/foe.db
+
+relatorios:
+  pasta_saida: relatorios

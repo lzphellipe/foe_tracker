@@ -1,0 +1,6 @@
+opencv-python>=4.8
+numpy>=1.24
+ultralytics>=8.2
+PyQt5>=5.15
+PyYAML>=6.0
+pytest>=7.4
